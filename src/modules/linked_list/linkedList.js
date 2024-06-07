@@ -75,17 +75,36 @@ module.exports = class LinkedList {
     while (currentNode.nextNode.nextNode !== null) {
       currentNode = currentNode.nextNode;
     }
-    return currentNode.nextNode = null;
+    return (currentNode.nextNode = null);
   }
+  //RECURSIVE APPROACH
+  // popRecursive(node) {
+  //   if (node.nextNode.nextNode === null) return node.nextNode = null;
+  //   return this.popRecursive(node.nextNode);
+  // }
 
   contains(value) {
     let currentNode = this.headNode;
     while (currentNode) {
       if (currentNode.value === value) {
-        return true
+        return true;
       }
       currentNode = currentNode.nextNode;
     }
     return false;
+  }
+
+  find(value) {
+    let currentNode = this.headNode;
+    let index = 0;
+    while (currentNode) {
+      if (value === currentNode.value) {
+        return index;
+      } else {
+        currentNode = currentNode.nextNode;
+        index++;
+      }
+    }
+    return null;
   }
 };
