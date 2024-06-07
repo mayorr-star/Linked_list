@@ -107,4 +107,25 @@ module.exports = class LinkedList {
     }
     return null;
   }
+
+  toString() {}
+
+  insertAt(value, index) {
+    if (index === 0) {
+      this.prepend(value);
+    } else {
+      const newNode = new Node(value);
+      const previousNode = this.at(index - 1);
+      const currentNode = this.at(index);
+      previousNode.nextNode = newNode;
+      newNode.nextNode = currentNode;
+    }
+  }
+
+  removeAt(index) {
+    const nodeToRemove = this.at(index);
+    const previousNode = this.at(index - 1);
+    const afterNode = this.at(index + 1);
+    previousNode.nextNode = afterNode;
+  }
 };
