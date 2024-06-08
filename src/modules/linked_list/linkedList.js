@@ -108,7 +108,16 @@ module.exports = class LinkedList {
     return null;
   }
 
-  toString() {}
+  toString() {
+    let linkedList = "";
+    let currentNode = this.headNode;
+    while (currentNode) {
+      linkedList += `(${currentNode.value}) -> `
+      currentNode = currentNode.nextNode;
+    }
+    linkedList += "null";
+    return linkedList;
+  }
 
   insertAt(value, index) {
     if (index === 0) {
